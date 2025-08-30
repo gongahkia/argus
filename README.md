@@ -52,7 +52,7 @@ $ git clone https://github.com/gongahkia/argus && cd argus
 ```env
 OPENAI_API_KEY=XXX
 OPENAI_API_BASE=https://api.openai.com/v1
-FLASK_ENV=XXx
+FLASK_ENV=XXX
 ```
 
 3. Then run the below to start up **development** and **production builds** of the [Frontend](./argus-frontend/) and [Backend](./src/).
