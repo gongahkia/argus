@@ -6,10 +6,10 @@ echo "Have you been pwnd? Preventing self-sabotage and career suicide from the g
 echo ""
 
 # Check if virtual environment exists
-if [ ! -d "venv" ]; then
+if [ ! -d ".venv" ]; then
     echo "❌ Virtual environment not found. Please run setup first:"
-    echo "   python3 -m venv venv"
-    echo "   source venv/bin/activate"
+    echo "   python3 -m venv .venv"
+    echo "   source .venv/bin/activate"
     echo "   pip install -r requirements.txt"
     exit 1
 fi
@@ -33,7 +33,7 @@ if [ -z "$OPENAI_API_KEY" ]; then
 fi
 
 # Activate virtual environment
-source venv/bin/activate
+source .venv/bin/activate
 
 # Start the application
 echo "🚀 Starting Argus Digital Sentinel on http://localhost:5000"
