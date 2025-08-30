@@ -2,7 +2,7 @@
 
 # `Argus`
 
-Full Stack Web App that monitors your [digital footprint](https://en.wikipedia.org/wiki/Digital_footprint) across social media platforms to prevent [career suicide](https://www.urbandictionary.com/define.php?term=career%20suicide) and professional self-sabotage.
+Full Stack Web App that monitors your [digital footprint](https://en.wikipedia.org/wiki/Digital_footprint) across [various social media platforms](#coverage) to prevent [career suicide](https://www.urbandictionary.com/define.php?term=career%20suicide) and professional self-sabotage.
 
 Made mainly to practise this [stack](#stack). My takeaways can be found [here](#takeaways).
 
@@ -15,6 +15,16 @@ Made mainly to practise this [stack](#stack). My takeaways can be found [here](#
 * *UI*: [shadcn/ui](https://ui.shadcn.com/), [Tailwind CSS](https://tailwindcss.com/), [Recharts](https://recharts.org/)
 * *Scraping*: [BeautifulSoup](https://www.crummy.com/software/BeautifulSoup/), [Requests](https://requests.readthedocs.io/)
 * *Deployment*: [Vite Static Build](https://vite.dev/guide/build.html)
+
+## Coverage
+
+`Argus` currently supports the following sites.
+
+* [Facebook](https://www.facebook.com/)
+* [Twitter (X)](https://x.com/)
+* [LinkedIn](https://www.linkedin.com/feed/)
+* [Instagram](https://www.instagram.com/)
+* [YouTube](https://www.youtube.com/)
 
 ## Screenshots
 
