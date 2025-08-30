@@ -2,6 +2,10 @@
 
 # `Argus`
 
+...
+
+make the description "have you been pwnd", "preventing self-sabotage and career suicide from the get-go" with MANUS AI
+
 ## Rationale
 
 ...
