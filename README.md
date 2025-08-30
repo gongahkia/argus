@@ -80,6 +80,64 @@ $ ./start.sh
 ## Architecture
 
 ```mermaid
+graph TD
+    subgraph Browser
+        User[End User] -->|Interacts with| App([src/App.tsx]);
+        App -->|Renders dashboard| Dashboard(src/components/Dashboard.tsx);
+        App -->|Renders alerts| Alerts(src/components/Alerts.tsx);
+        Dashboard -->|Triggers scan| Scan(src/components/ScanButton.tsx);
+        Scan -->|User clicks scan| HB(handleScan function);
+        HB -->|POST /api/scan| APIREQ(axios/fetch -> Flask REST API);
+        Alerts -->|Dismiss alert| HA(handleAlertDismiss function);
+        HA -->|POST /api/alerts/dismiss| APIREQ;
+        App -->|Gets latest report| APIREQ;
+        App -->|Renders charts| Charts(src/components/Charts.tsx);
+    end
+
+    subgraph "Flask Backend API"
+        APIREQ -->|Hits router| FlaskRoutes(src/routes.py);
+        FlaskRoutes -->|Routes to| Controllers(src/controllers/scan_controller.py);
+        FlaskRoutes -->|Routes to| AlertsController(src/controllers/alerts_controller.py);
+        FlaskRoutes -->|Routes to| ReportsController(src/controllers/reports_controller.py);
+        Controllers -->|Run scan logic| ScanLogic(src/services/scan_service.py);
+        AlertsController -->|Dismiss alert logic| AlertLogic(src/services/alert_service.py);
+        ReportsController -->|Report fetch logic| ReportLogic(src/services/report_service.py);
+        ScanLogic -->|Scrape social media| Scraper(src/services/scraper.py);
+        ScanLogic -->|Moderate content| AIModeration(src/services/ai_moderation.py);
+        AIModeration -->|Sends to OpenAI API| OpenAI(OpenAI GPT Moderation);
+        OpenAI -->|Returns risk analysis| AIModeration;
+        Scraper -->|Uses Requests/BS4| SocialMediaAPIs;
+        ScanLogic -->|Stores/loads data| DB(src/db/db.sqlite via SQLAlchemy);
+        AlertLogic -->|Updates alerts in DB| DB;
+        ReportLogic -->|Loads/saves report| DB;
+        FlaskRoutes -->|Sends JSON to frontend| APIRESP(Flask Response);
+    end
+
+    %% Original Styles
+    style User fill:#f9f,stroke:#333,stroke-width:2px
+    style App fill:#bbf,stroke:#333,stroke-width:2px
+    style Dashboard fill:#cfe,stroke:#333,stroke-width:2px
+    style Alerts fill:#fce,stroke:#333,stroke-width:2px
+    style Scan fill:#cde,stroke:#333,stroke-width:2px
+    style HB fill:#dae,stroke:#333,stroke-width:2px
+    style HA fill:#eaf,stroke:#333,stroke-width:2px
+    style Charts fill:#ecf,stroke:#333,stroke-width:2px
+    style APIREQ fill:#ace,stroke:#333,stroke-width:2px
+    style APIRESP fill:#ccc,stroke:#333,stroke-width:2px
+
+    style FlaskRoutes fill:#f80,stroke:#333,stroke-width:2px
+    style Controllers fill:#fab,stroke:#333,stroke-width:2px
+    style AlertsController fill:#fad,stroke:#333,stroke-width:2px
+    style ReportsController fill:#fbd,stroke:#333,stroke-width:2px
+    style ScanLogic fill:#fbf,stroke:#333,stroke-width:2px
+    style AlertLogic fill:#fcd,stroke:#333,stroke-width:2px
+    style ReportLogic fill:#edb,stroke:#333,stroke-width:2px
+    style Scraper fill:#ffc,stroke:#333,stroke-width:2px
+    style AIModeration fill:#cfa,stroke:#333,stroke-width:2px
+    style DB fill:#b3f,stroke:#333,stroke-width:2px
+
+    style SocialMediaAPIs fill:#9f9,stroke:#333,stroke-width:2px
+    style OpenAI fill:#9af,stroke:#333,stroke-width:2px
 ```
 
 ## Endpoints
