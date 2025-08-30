@@ -6,10 +6,6 @@ Full Stack Web App that monitors your [digital footprint](https://en.wikipedia.o
 
 Made mainly to practise this [stack](#stack). My takeaways can be found [here](#takeaways).
 
-## Rationale
-
-make the description "have you been pwnd", "preventing self-sabotage and career suicide from the get-go" with MANUS AI
-
 ## Stack
 
 * *Frontend*: [React](https://react.dev/), [Vite](https://vite.dev/), [TypeScript](https://www.typescriptlang.org/)
@@ -18,12 +14,25 @@ make the description "have you been pwnd", "preventing self-sabotage and career 
 * *AI*: [OpenAI GPT](https://openai.com/api/), [Content Analysis](https://platform.openai.com/docs/guides/moderation)
 * *UI*: [shadcn/ui](https://ui.shadcn.com/), [Tailwind CSS](https://tailwindcss.com/), [Recharts](https://recharts.org/)
 * *Scraping*: [BeautifulSoup](https://www.crummy.com/software/BeautifulSoup/), [Requests](https://requests.readthedocs.io/)
-* *Deployment*: [Local Hosting](https://flask.palletsprojects.com/en/stable/deploying/), [Static Build](https://vite.dev/guide/build.html)
-* *Theme*: [Gruvbox Material Light](https://github.com/sainnhe/gruvbox-material)
+* *Deployment*: [Vite Static Build](https://vite.dev/guide/build.html)
 
 ## Screenshots
 
-...
+### Argus Dashboard
+
+![](./asset/reference/1.png)
+
+### Argus Platform
+
+![](./asset/reference/2.png)
+
+### Argus Alerts
+
+![](./asset/reference/3.png)
+
+### Argus Report Generation
+
+![](./asset/reference/4.png)
 
 ## Usage
 
@@ -40,12 +49,10 @@ $ git clone https://github.com/gongahkia/argus && cd argus
 
 2. Create `.env` at the project root with the relevant secrets.
 
-`.env`
-
 ```env
-OPENAI_API_KEY=your-openai-api-key-here
+OPENAI_API_KEY=XXX
 OPENAI_API_BASE=https://api.openai.com/v1
-FLASK_ENV=development
+FLASK_ENV=XXx
 ```
 
 3. Then run the below to start up **development** and **production builds** of the [Frontend](./argus-frontend/) and [Backend](./src/).
@@ -82,9 +89,7 @@ $ ./start.sh
 ## Takeaways
 
 * Integrating OpenAI's content moderation API with custom risk assessment logic provided surprisingly nuanced analysis of social media content that goes beyond simple keyword filtering.
-* The Gruvbox Material Light theme creates a professional yet approachable aesthetic that reduces the anxiety often associated with security monitoring tools.
 * Building a privacy-first architecture where all processing happens locally (except AI analysis) was crucial for user trust and data protection.
-* React's component architecture with shadcn/ui made creating a Notion-like interface surprisingly straightforward and maintainable.
 * Flask's simplicity allowed rapid prototyping of AI-powered endpoints while maintaining clear separation between data collection, analysis, and reporting concerns.
 
 ## Reference
