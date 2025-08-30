@@ -16,16 +16,6 @@ Made mainly to practise this [stack](#stack). My takeaways can be found [here](#
 * *Scraping*: [BeautifulSoup](https://www.crummy.com/software/BeautifulSoup/), [Requests](https://requests.readthedocs.io/)
 * *Deployment*: [Vite Static Build](https://vite.dev/guide/build.html)
 
-## Coverage
-
-`Argus` currently supports the following sites.
-
-* [Facebook](https://www.facebook.com/)
-* [Twitter (X)](https://x.com/)
-* [LinkedIn](https://www.linkedin.com/feed/)
-* [Instagram](https://www.instagram.com/)
-* [YouTube](https://www.youtube.com/)
-
 ## Screenshots
 
 ### Argus Dashboard
@@ -86,6 +76,16 @@ $ cp -r argus-frontend/dist/* src/static/
 $ chmod +x start.sh
 $ ./start.sh
 ```
+
+## Coverage
+
+`Argus` currently supports the following sites.
+
+* [Facebook](https://www.facebook.com/)
+* [Twitter (X)](https://x.com/)
+* [LinkedIn](https://www.linkedin.com/feed/)
+* [Instagram](https://www.instagram.com/)
+* [YouTube](https://www.youtube.com/)
 
 ## Architecture
 
