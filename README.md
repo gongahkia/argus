@@ -84,7 +84,16 @@ $ ./start.sh
 
 ## Endpoints
 
-...
+| Endpoint Type         | Source                            | Schema                                                                                                         | Example command                                                                                                                              |
+| :---                 | :---                              | :---                                                                                                          |:---                                                                                                                                         |
+| User Authentication  | Local Argus Server                | `{"username": "<USERNAME>", "password": "<PASSWORD>"}`                                                        | `curl -X POST http://localhost:5000/api/auth/login -H "Content-Type: application/json" -d '{"username": "alice", "password": "xxx"}'`         |
+| Profile Retrieval    | Local Argus Server                | JWT bearer in header                                                                                           | `curl -X GET http://localhost:5000/api/user/profile -H "Authorization: Bearer <TOKEN>"`                                                      |
+| Add Social Media     | Facebook, X, LinkedIn, Instagram  | `{"platform": "<PLATFORM>", "account_id": "<USERID>"}`                                                        | `curl -X POST http://localhost:5000/api/channels/add -H "Content-Type: application/json" -d '{"platform": "twitter", "account_id": "bob456"}'`|
+| Scan for Risks       | Argus content analysis pipeline    | JWT bearer in header                                                                                           | `curl -X POST http://localhost:5000/api/scan -H "Authorization: Bearer <TOKEN>"`                                                             |
+| Get Latest Report    | Local Argus Server                | JWT bearer in header                                                                                           | `curl -X GET http://localhost:5000/api/report/latest -H "Authorization: Bearer <TOKEN>"`                                                     |
+| Download Report      | Local Argus Server                | Format in query string (e.g. `?format=pdf`)                                                                    | `curl -X GET "http://localhost:5000/api/report/download?format=pdf" -H "Authorization: Bearer <TOKEN>"`                                      |
+| Risk Assessment      | OpenAI Moderation API              | `{"content": "<POST_TEXT>"}`                                                                                   | `curl -X POST http://localhost:5000/api/content/assess -H "Content-Type: application/json" -d '{"content": "Check my post for risk"}'`        |
+| Alerts Dismissal     | Local Argus Server                | `{"alert_id": "<ALERTID>"}`                                                                                    | `curl -X POST http://localhost:5000/api/alerts/dismiss -H "Content-Type: application/json" -d '{"alert_id": "12345"}'`                        |
 
 ## Takeaways
 
